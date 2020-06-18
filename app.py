@@ -14,4 +14,4 @@ if FLASK_ENV is None:
 app = create_app(FLASK_ENV)
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run_server()

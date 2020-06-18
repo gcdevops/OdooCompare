@@ -1,0 +1,4 @@
+
+class AzureConnectionError(Exception):
+    pass
+
