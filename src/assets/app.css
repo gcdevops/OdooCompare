@@ -1,0 +1,14 @@
+.elementContainer{
+    margin: 10px 5px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    border-radius: 2px;
+    box-shadow: 0 0 10px black;
+}
+
+label{
+    font-size: 20px;
+    font-weight: 600;
+}

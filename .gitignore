@@ -4,3 +4,5 @@
 venv
 **/*.pyc
 **/*.mypy_cache
+**/*.pytest_cache
+src/static

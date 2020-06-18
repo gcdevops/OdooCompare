@@ -1,0 +1,56 @@
+.numberOfEmployeesContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    flex-wrap: nowrap;
+    border-bottom: 1px solid black;
+}
+
+.numberOfEmployeesContainer p{
+    font-size: 200px;
+    font-weight: 700;
+    margin: 5px;
+}
+
+.numberOfCriticalEmployeesContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+    flex-wrap: nowrap;
+}
+
+.numberOfCriticalEmployeesContainer p {
+    font-size: 150px;
+    font-weight: 700;
+    margin: 5px;
+}
+
+.employeesPieChartContainer {
+    width: 50%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 800px){
+    .employeesPieChartContainer{
+        width: 100%;
+    }
+
+    .numberOfEmployeesContainer p {
+        font-size: 100px;
+    
+    }
+    .numberOfCriticalEmployeesContainer p {
+        font-size: 100px;
+    }
+    .numberOfCriticalEmployeesContainer{
+        border-bottom: 1px solid black;
+        width: 100%;
+    }
+}
