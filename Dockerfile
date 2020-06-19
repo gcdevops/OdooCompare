@@ -5,16 +5,22 @@ ARG APP_ENV
 ENV APP_ENV ${APP_ENV}
 ENV FLASK_ENV ${APP_ENV}
 
+ARG ODOO_URL
+ARG ODOO_USERNAME
+ARG ODOO_PASSWORD
+ARG ODOO_DATABASE
+
+ENV ODOO_URL ${ODOO_URL}
+ENV ODOO_USERNAME ${ODOO_USERNAME}
+ENV ODOO_PASSWORD ${ODOO_PASSWORD}
+ENV ODOO_DATABASE ${ODOO_DATABASE}
+
+
 # install python 3.7
 RUN apt update  &&  apt install -y software-properties-common curl && \
 add-apt-repository -y ppa:deadsnakes/ppa && \
 apt install -y python3.7 && python3.7 --version && apt install -y python3-pip && \
 python3.7 -m pip install pip
-
-# adding rabbitMQ signing key and installing dependencies
-RUN apt update && \
-curl -fsSL https://github.com/rabbitmq/signing-keys/releases/download/2.0/rabbitmq-release-signing-key.asc | apt-key add - && \
-apt-get install -y apt-transport-https
 
 
 # install nginx web server
@@ -22,12 +28,6 @@ RUN apt update && \
 apt install -y nginx && \
 rm /etc/nginx/sites-available/default && \
 rm /etc/nginx/sites-enabled/default
-
-
-# installing rabbitMQ
-COPY ./docker/bintray.rabbitmq.list /etc/apt/sources.list.d/bintray.rabbitmq.list
-RUN apt-get update -y && \
-apt-get install rabbitmq-server -y --fix-missing
 
 
 # set working directory

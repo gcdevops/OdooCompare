@@ -3,11 +3,12 @@ import os
 import dash
 import dash_html_components as html
 from dotenv import load_dotenv
+from typing import Tuple
 import logging
 
 load_dotenv()
  
-def create_app(env="production") -> Flask:
+def create_app(env="production") -> Tuple[dash.Dash, Flask]:
 
     server = Flask(__name__)
 
@@ -72,4 +73,4 @@ def create_app(env="production") -> Flask:
     
     app.layout = appLayout(app = server, dash_app=app)
 
-    return app
+    return (app, server)

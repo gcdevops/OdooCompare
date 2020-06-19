@@ -1,0 +1,15 @@
+version: '3'
+
+services: 
+    odoo-compare:
+        build: .
+        ports:
+            - 8050:80
+        environment:
+            - FLASK_ENV=${FLASK_ENV}
+            - ODOO_URL=${ODOO_URL}
+            - ODOO_USERNAME=${ODOO_USERNAME}
+            - ODOO_PASSWORD=${ODOO_PASSWORD}
+            - ODOO_DATABASE=${ODOO_DATABASE}
+        volumes: 
+            - ./src/static:/home/root/src/static

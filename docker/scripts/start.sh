@@ -12,11 +12,13 @@ source venv/bin/activate
 NUM_CORES=$( getconf _NPROCESSORS_ONLN )
 echo "$NUM_CORES cpu cores detected on system"
 
-if [ "$APP_ENV" == "development" ]
+if [ "$FLASK_ENV" == "development" ]
 then
     echo "Starting application in development mode"
-    flask run -p 8080
+    python app.py
 else
+    echo "Generating initial data csv"
+    python app.py -g
     echo "Starting application with $NUM_CORES workers"
-    gunicorn -w $NUM_CORES app:app -b 127.0.0.1:8080
+    gunicorn -w $NUM_CORES app:server -b 127.0.0.1:8050 -t 600
 fi
