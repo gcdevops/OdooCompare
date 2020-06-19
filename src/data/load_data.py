@@ -5,6 +5,7 @@ import os
 from src.utils.connect_to_odoo import connect_to_rpc
 from datetime import datetime
 from typing import cast
+from shutil import copyfile
 
 
 def download_odoo_data(
@@ -138,7 +139,7 @@ def load_odoo_data(
     data_exists = True 
 
     if not os.path.isdir(data_folder):
-        os.mkdir(data_folder)
+        os.makedirs(data_folder)
         data_exists = False
     
     data_file_name = "data_" + current_time.strftime(
@@ -196,7 +197,16 @@ def load_odoo_data(
             )
 
             if timeSinceLastRefreshSeconds >= 3600:
+                print(timeSinceLastRefreshSeconds)
                 with app.app_context():
+                    logging.debug("generating new data set")
+                    copyfile(
+                        os.path.join(
+                            data_folder,
+                            latest_file
+                        ),
+                        data_file_path
+                    )
                     df = download_odoo_data(
                         username,
                         password,

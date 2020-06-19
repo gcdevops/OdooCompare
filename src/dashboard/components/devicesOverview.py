@@ -185,10 +185,14 @@ def devicesOverview(**props):
             Input(
                 component_id="device-overview-critial-employee-filter",
                 component_property="value"
+            ),
+            Input(
+                component_id='interval-component',
+                component_property='n_intervals'
             )
         ]
     )
-    def recalculate_devices(branches, statuses, jobs, criticality):
+    def recalculate_devices(branches, statuses, jobs, criticality, n):
         data_dict = calculate_devices(
             username,
             password,
